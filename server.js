@@ -26,8 +26,8 @@ app.get('/post/:id', (req, res) => {
     });
 });
 
+//Creating new Post
 app.post('/post', (req, res) => {
-
     var post = new Post({
         title: req.body.title
     });
@@ -38,6 +38,7 @@ app.post('/post', (req, res) => {
     });
 });
 
+//List of all users
 app.get('/user', (req, res) => {
     User.find().then((user) => {
         res.send(user);
@@ -46,6 +47,7 @@ app.get('/user', (req, res) => {
     });
 });
 
+//Creating a new user
 app.post('/user', (req, res) => {
     var user = new User({
         name: req.body.name
@@ -57,6 +59,7 @@ app.post('/user', (req, res) => {
     });
 });
 
+//Updating post
 app.post('/like/:postId', (req, res) => {
     Post.findByIdAndUpdate({_id: req.params.postId}, {$set: req.body}, {new: true}).then((post) => {
         if (!post) {

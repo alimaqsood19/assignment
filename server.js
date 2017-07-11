@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 //Post ID will return specified post, populate 'likes' field, display which users like this post
 app.get('/post/:id', (req, res) => {
-    Post.findById({_id: req.params.id}).populate('likes').then((post) => { //Populates who has liked each individual post
+    Post.findById({_id: req.params.id}).populate('likes').then((post) => { //Populates who has likes field
         const names = _.map(post.likes, 'name');
         res.send(names); //Display an array of user's names who have liked the post
     }).catch((err) => {
